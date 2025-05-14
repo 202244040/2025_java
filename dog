@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ZooApp
+{
+    internal class Dog
+    {
+        private string _name;
+        private int _level;
+        private COLOR _color;
+        private int _year;
+
+        public string Nmae { get { return _name; } }
+        public COLOR color { get { return _color; } }
+        public int Level { get { return _level; } }
+        public int year { get { return _year; } }
+
+        public Dog(string name, COLOR color, int year)
+        {
+            _name = name;
+            _color = color;
+            _year = year;
+        }
+
+        public override string ToString()
+        {
+            return $"DOG:{_name}";
+        }
+       
+        public string Bark(int count)
+        {
+            string retValue = "";
+            for (int i = 0; i < count; i++)
+            {
+                retValue += "왈!";
+            }
+            return retValue;
+        }
+
+        public void Eat() { AddLevel(3); }
+
+        public void Play() { AddLevel(2); }
+
+        private bool AddLevel(int level)
+        {
+            if (_level + level <= 100)
+            {
+                _level += level;
+                return true;
+            } else
+            {
+                _level = 100;
+                return false;
+            }
+        }
+    }
+}
